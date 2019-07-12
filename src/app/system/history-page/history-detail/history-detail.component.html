@@ -1,0 +1,49 @@
+<div class="text-center" *ngIf="!isLoaded">Loading ....</div>
+<div *ngIf="isLoaded">
+  <div class="title-block">
+    <h3 class="title">
+      <a [routerLink]="['/system/history']"><i class="fa fa-arrow-left"></i></a>
+      Страница записи № {{ numberPage }}
+      <span class="sparkline bar"></span>
+    </h3>
+  </div>
+  <div *ngIf="isEditVisible">
+    <wfm-history-edit 
+      (onEditCancel)="closeEditHistory()"
+      (onEditApply)="applyEditHistory($event)"
+      [eventItem]="event"
+    ></wfm-history-edit>
+  </div>
+  <section class="section" *ngIf="!isEditVisible">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+        <div class="card" [ngClass]="{
+          'card-success': event.type === 'income',
+          'card-danger': event.type === 'outcome'
+        }">
+          <div class="card-header">
+            <div class="header-block">
+              <p class="title">
+                <span *ngIf="event.type === 'income'">Доход</span>
+                <span *ngIf="event.type === 'outcome'">Расход</span>
+              </p>
+            </div>
+          </div>
+          <div class="card-block">
+            <ul>
+              <li>Сумма: <strong>{{event.amount | number:'1.2'}} P</strong></li>
+              <li>Категория: <strong>{{category.name}}</strong></li>
+              <li>Комментарий: <strong>{{event.description}}</strong></li>
+            </ul>
+          </div>
+          <div class="card-footer">{{event.date}}</div>
+          <div class="card-footer">
+            <button type="button" class="btn btn-primary" (click)="editHistory()">Редактировать</button>
+            <button type="button" class="btn btn-danger" (click)="deleteHistory(event)">Удалить</button>
+            <button type="button" class="btn btn-success" (click)="back()">Назад</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

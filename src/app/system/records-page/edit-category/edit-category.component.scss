@@ -1,0 +1,17 @@
+.modal .modal-dialog {
+	text-align: center;
+	position: asolute;
+	top: 30%;
+}
+.modal .modal-dialog::before {
+	content: '';
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+}
+
+.modal .modal-dialog .modal-content {
+	max-width: 600px;
+	vertical-align: middle;
+	display: inline-block;
+}

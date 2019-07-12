@@ -1,0 +1,16 @@
+.chart-center {
+  display: flex;
+  justify-content: center;
+  height: 350px;
+}
+@media only screen and (max-width : 480px) {
+	.chart-center {
+    height: 300px;
+	}
+}
+
+@media only screen and (max-width : 410px) {
+	.chart-center {
+    height: 220px;
+	}
+}

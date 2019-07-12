@@ -1,0 +1,30 @@
+.mobile-data {
+	display: none;
+}
+@media only screen and (max-width : 768px) {
+	.mobile-data {
+		display: block;
+	}
+	.card-block .main {
+		display: none;
+	}
+	.td-button {
+		text-align: center;
+	}
+}
+@media only screen and (max-width : 710px) {
+	.card-header .pull-right {
+		float: none;
+		text-align: center;
+		margin-top: 15px;
+		margin-bottom: 20px;
+	}
+	.header-block h3 {
+		margin-top: 20px;
+	}
+	.card-header .form-group .form-control {
+		width: 200px;
+		margin: 6px auto 6px;
+	}
+
+}

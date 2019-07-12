@@ -1,0 +1,45 @@
+<div class="title-block">
+  <h3 class="title">
+    Страница записей <span class="sparkline bar"></span>
+  </h3>
+</div>
+
+<section class="section text-center" *ngIf="!isLoaded">
+  <wfm-loader></wfm-loader>
+</section>
+
+<section class="section" *ngIf="isLoaded">
+  <div class="row">
+    <div *ngIf="!isCategoriesEmpty">
+      <div class="col-md-6">
+        <wfm-add-event 
+          [categories]="categories"
+          [loading]="loading"
+          (onLoading)="dataLoader($event)"
+        ></wfm-add-event>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <wfm-add-category 
+        (onCategoryAdd)="newCategoryAdded($event)" 
+        [loading]="loading"
+        (onLoading)="dataLoader($event)"
+      ></wfm-add-category>
+    </div>
+  </div>
+  <div class="row">
+    <div *ngIf="!isCategoriesEmpty">
+      <div class="col-md-6">
+        <wfm-edit-category
+        [categories]="categories"
+        (onCategoryEdit)="categoryWasEdited($event)"
+        (onCategoryDelete)="categoryWasDelete($event)"
+        (onLoading)="dataLoader($event)"
+        [loading]="loading"
+        ></wfm-edit-category>
+      </div>
+    </div>
+  </div>
+
+  
+</section>
